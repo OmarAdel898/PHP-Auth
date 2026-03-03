@@ -1,7 +1,3 @@
-<?php
-// navbar.php needs session — connection.php must be loaded before
-?>
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
     <a class="navbar-brand fw-bold" href="home.php">MyApp</a>
@@ -30,7 +26,5 @@
         <?php endif; ?>
       </ul>
     </div>
-  </div>
-</nav>
   </div>
 </nav>

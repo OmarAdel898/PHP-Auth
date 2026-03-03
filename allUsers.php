@@ -1,15 +1,12 @@
 <?php
 require "connection.php";
 
-// Guard: must be logged in
 if (!isset($_SESSION['loginId'])) {
     header("location:login.php?message=Please login first");
     exit;
 }
 
-$stmt = $conn->prepare("SELECT id, name, email FROM users");
-$stmt->execute();
-$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$users = $userModel->getAll();
 
 require "header.php";
 require "navbar.php";

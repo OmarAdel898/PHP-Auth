@@ -1,7 +1,6 @@
 <?php
 require "connection.php";
 
-// Guard: must be logged in
 if (!isset($_SESSION['loginId'])) {
     header("location:login.php?message=Please login first");
     exit;
@@ -12,10 +11,8 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     exit;
 }
 
-$id = (int) $_GET['id'];
-$stmt = $conn->prepare("SELECT id, name, email FROM users WHERE id = ?");
-$stmt->execute([$id]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
+$id   = (int) $_GET['id'];
+$user = $userModel->find($id);
 
 if (!$user) {
     header("location:allUsers.php?message=User not found");
